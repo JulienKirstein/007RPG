@@ -12,14 +12,15 @@ import java.util.Scanner;
 * a score which increase when a mob is killed
 * */
 
-class Game {
+public class Game {
 
-    private Player player;
+    private static Player player;
     private int level = 0;
     private int fightNumber = 0;
     private int score = 0;
     private Mob mob;
     private static Game instance;
+    public static Scanner in = new Scanner(System.in);
 
     static {
         try {
@@ -29,19 +30,24 @@ class Game {
         }
     }
 
-    private Game() throws InterruptedException {
+    private Game() throws InterruptedException
+    {
         System.out.println("WELCOME IN 007 RPG");
-        TimeUnit.SECONDS.sleep(1);
         System.out.println("???WHAT IS YOUR NAME HOMIE???");
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        this.player = Player.getInstance();
-        player.setName(name);
+        setPlayer(in);
+        loading();
     }
-
+    
+    public static String setPlayer(Scanner in)
+    {
+        String name = in.nextLine();
+        player = Player.getInstance();
+        player.setName(name);
+        return name;
+    }
     /* Setup the Singleton design Pattern
     * */
-    static Game getInstance()
+    public static Game getInstance()
     {
         return instance;
     }
@@ -97,13 +103,14 @@ class Game {
 
     /* loading: displays three points on the console, is used to make the action more visible
      * */
-    private void loading(){
+    public static int loading(){
         System.out.println("                    .");
         wait(300);
         System.out.println("                    .");
         wait(300);
         System.out.println("                    .");
         wait(300);
+        return 1;
     }
 
     /* fightStatus: gives the Hp of the mob and the player
