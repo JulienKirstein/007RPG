@@ -19,37 +19,41 @@ public class Game {
     private int fightNumber = 0;
     private int score = 0;
     private Mob mob;
-    private static Game instance;
-    public static Scanner in = new Scanner(System.in);
+    private static Game game = null;
+    public static Scanner sc = new Scanner(System.in);
 
-    static {
+  /*  static {
         try {
             instance = new Game();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    } */
 
-    private Game() throws InterruptedException
+    private Game(Scanner sc) throws InterruptedException
     {
         System.out.println("WELCOME IN 007 RPG");
         System.out.println("???WHAT IS YOUR NAME HOMIE???");
-        setPlayer(in);
+        setPlayer(sc);
         loading();
     }
     
-    public static String setPlayer(Scanner in)
+    private static String setPlayer(Scanner sc)
     {
-        String name = in.nextLine();
+        String name = sc.nextLine();
         player = Player.getInstance();
         player.setName(name);
         return name;
     }
     /* Setup the Singleton design Pattern
     * */
-    public static Game getInstance()
+    public static Game getInstance(Scanner in) throws InterruptedException
     {
-        return instance;
+    	if (game == null)
+    	{
+    		game = new Game(in);
+    	}
+        return game;
     }
     /* upgrade, allows the player to choose between 3 small upgrades every end of level
      * */

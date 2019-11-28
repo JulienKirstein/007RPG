@@ -5,22 +5,18 @@ import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 import main.java.game.Game;
+
 import java.util.Scanner;
 
 class GameTest {
 
-    private static  Game game;
-
-    @BeforeClass
-    public static void setupBeforeClass()
-    {
-        game = main.java.game.Game.getInstance();
-    }
+    public static  Game game;
 
 	@Test
-	void setPlayerTest()
+	void createGameTest() throws InterruptedException
 	{
-		Scanner in = new Scanner("Yannis");
-		assertEquals(game.setPlayer(in),"Yannis");
+		Scanner sc = new Scanner("Yannis");
+    	game = Game.getInstance(sc);
+    	assertEquals(game==null,false);
 	}
 }
