@@ -120,7 +120,7 @@ public abstract class Entity {
                 float trueDmg= damageMultiplicator*baseDamage;
                 int trueDmgInt = (int)trueDmg;
                 enemy.setHp(enemy.getHp() - trueDmgInt);                                                                //the enemy Hp are lowered according to : the attacker damages and weapon damages, the armor and damage reduction of the enemy
-                System.out.println("                " + enemy.getName() + " à  perdu " +
+                System.out.println("                " + enemy.getName() + " aÂ  perdu " +
                         (trueDmgInt) + " hp");
 
                 if (getWeapon().lifeSelfImpact() != 0) {
