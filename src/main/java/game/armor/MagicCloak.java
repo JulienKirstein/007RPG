@@ -1,7 +1,4 @@
 package main.java.game.armor;
-
-import main.java.game.armor.Armor;
-
 public class MagicCloak implements Armor {
     @Override
     public int damageReduced(){

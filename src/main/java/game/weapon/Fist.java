@@ -1,7 +1,4 @@
 package main.java.game.weapon;
-
-import main.java.game.armor.Armor;
-
 public class Fist implements Weapon {
 
     @Override

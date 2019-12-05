@@ -82,7 +82,7 @@ public abstract class Entity {
     * */
     public void regeneration(){
         int initHp = getHp();
-        int regenTotal = (getArmor().regen()+getRegen());
+        int regenTotal = getArmor().regen()+getRegen();
         if(regenTotal != 0){
             setHp(getHp()+regenTotal);
             if (getHp()>getMaxHp()){
@@ -106,7 +106,6 @@ public abstract class Entity {
             if (!enemy.getState().equals("Defending")){
                 int crit = 1;                                                                                                   //this is the critical counter
                 int initHp = getHp();
-                int initEnemyHp = enemy.getHp(); //if the random number between 1 and  100 is inferior to the crit chance, the attack will hit twice
                 if ((int)(Math.random() * 101) < (critical+getWeapon().criticalStrike())) {
                     crit = 2;                                                                                           //critical counter goes to 2
                     System.out.println("                " + crit*getWeapon().damage() +
@@ -114,9 +113,9 @@ public abstract class Entity {
                     lifeSelfImpact();                                                                                   //will hit twice if crit
                 }
                 lifeSelfImpact();
-                float baseDamage= (getAttack() + crit*getWeapon().damage());                                            //the crit only works on the weapon damages
+                float baseDamage= getAttack() + crit*getWeapon().damage();                                            //the crit only works on the weapon damages
                 int enemyDamageReduction = enemy.getArmor().damageReduced();
-                float damageMultiplicator = (100/(100+(float)enemyDamageReduction));
+                float damageMultiplicator = 100/(100+(float)enemyDamageReduction);
                 float trueDmg= damageMultiplicator*baseDamage;
                 int trueDmgInt = (int)trueDmg;
                 enemy.setHp(enemy.getHp() - trueDmgInt);                                                                //the enemy Hp are lowered according to : the attacker damages and weapon damages, the armor and damage reduction of the enemy

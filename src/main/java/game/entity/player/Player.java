@@ -1,6 +1,4 @@
 package main.java.game.entity.player;
-
-import main.java.game.armor.Coat;
 import main.java.game.armor.Naked;
 import main.java.game.entity.Entity;
 import main.java.game.weapon.Fist;

@@ -50,15 +50,15 @@ public abstract class Mob extends Entity {
         float chanceAtt = min + (int)(Math.random() * rangeAtt);
         float chanceDef = min + (int)(Math.random() * rangeDef);
         float chanceRech = min + (int)(Math.random() * rangeRech);
-        if ((chanceAtt > chanceDef) && (chanceAtt > chanceRech)){
+        if (chanceAtt > chanceDef && chanceAtt > chanceRech){
             setState("Attacking");
             return 1;
         }
-        if ((chanceDef > chanceRech) && (chanceDef > chanceAtt)){
+        if (chanceDef > chanceRech && chanceDef > chanceAtt){
             setState("Defending");
             return 2;
         }
-        if ((chanceRech > chanceDef) && (chanceRech > chanceAtt)){
+        if (chanceRech > chanceDef && chanceRech > chanceAtt){
             setState("Reloading");
             return 3;
         }

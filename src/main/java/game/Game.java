@@ -4,7 +4,6 @@ import main.java.game.entity.mob.Mob;
 import main.java.game.entity.mob.MobsBoard;
 import main.java.game.entity.mob.MobsBuilder;
 import main.java.game.entity.player.Player;
-import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
 
 /*
@@ -222,7 +221,7 @@ public class Game {
             loading();
             System.out.println("Press enter when you are ready" );
             Scanner starter = new Scanner(System.in);
-            String ready = starter.nextLine();
+            starter.nextLine();
             System.out.println("----------------------GOOD LUCK----------------------" );
             MobsBuilder mobsBuilder = new MobsBuilder();
             MobsBoard mobs = mobsBuilder.buildMobs(level);
