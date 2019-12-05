@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import main.java.game.Game;
 import java.util.Scanner;
+import java.io.File;
 
 public class GameTest {
 
