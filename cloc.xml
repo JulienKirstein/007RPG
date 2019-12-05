@@ -1,0 +1,19 @@
+<?xml version="1.0"?><results>
+<header>
+  <cloc_url>github.com/AlDanial/cloc</cloc_url>
+  <cloc_version>1.70</cloc_version>
+  <elapsed_seconds>0.0118348598480225</elapsed_seconds>
+  <n_files>4</n_files>
+  <n_lines>179</n_lines>
+  <files_per_second>337.984568585185</files_per_second>
+  <lines_per_second>15124.809444187</lines_per_second>
+  <report_file>cloc.xml</report_file>
+</header>
+<files>
+  <file name="src/main/java/app/Stock.java" blank="11" comment="28" code="59"  language="Java" />
+  <file name="src/test/java/CarTest.java" blank="6" comment="0" code="20"  language="Java" />
+  <file name="src/main/java/app/Car.java" blank="6" comment="16" code="19"  language="Java" />
+  <file name="src/test/java/SampleTest.java" blank="1" comment="3" code="10"  language="Java" />
+  <total blank="24" comment="47" code="108" />
+</files>
+</results>
