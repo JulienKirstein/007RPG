@@ -13,8 +13,7 @@ public class JulienTest {
     	File myFile[] = new File(".\\src\\main\\java\\game\\entity\\mob").listFiles();
     	//System.out.println(new File(".\\src\\main\\java\\game\\entity\\mob").listFiles().clone()[1]);
     	//System.out.println(new File(".\\src\\main\\java\\game\\entity\\mob").listFiles());
-    	System.out.println(myFile.length-2);
+    	int result = myFile.length-2;
     	assertEquals(0,0);
-	}
-	
+	}	
 }
