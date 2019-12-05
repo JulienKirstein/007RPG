@@ -1,6 +1,6 @@
 package test.java;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 import main.java.game.Game;
 import java.util.Scanner;
 class GameTest {
