@@ -91,8 +91,6 @@ public class Game {
 
     }
 
-    /* wait: used to delay time
-     * */
     private static void wait(int ms){
         try
         {
@@ -104,8 +102,7 @@ public class Game {
         }
     }
 
-    /* loading: displays three points on the console, is used to make the action more visible
-     * */
+
     public static int loading(){
         System.out.println("                    .");
         wait(300);
@@ -127,7 +124,7 @@ public class Game {
      * */
     private void fight(Mob mob) {
 
-        while(player.getHp() > 0 && mob.getHp() > 0)  //while the player and the mob are alive (the whole loop represents one turn)
+        while(player.getHp() > 0 && mob.getHp() > 0)
         {
             boolean actionIsValid = false;
             while (!actionIsValid) {
@@ -172,11 +169,6 @@ public class Game {
         }
     }
 
-    /*
-    * loop : this is the gameplay loop, she keeps turning until the player die or the max level is hit
-    *
-    *
-    * */
     private void mobDoAction(){
         int mobAction = mob.rng(player);
 
@@ -195,7 +187,6 @@ public class Game {
 
     void loop() {
         while (player.getHp() > 0) {
-
             System.out.println("-----------The Rules-----------");
             System.out.println("the rules are simple, you have 3 stats:");
             System.out.println("Health points: when it goes to zero you die");
@@ -220,8 +211,7 @@ public class Game {
             System.out.println("but don't worry you can drop weapons and armor on mobs!" );
             loading();
             System.out.println("Press enter when you are ready" );
-            Scanner starter = new Scanner(System.in);
-            starter.nextLine();
+            sc.nextLine(); // REPLACE BY sc , avoid recreation of a scanner
             System.out.println("----------------------GOOD LUCK----------------------" );
             MobsBuilder mobsBuilder = new MobsBuilder();
             MobsBoard mobs = mobsBuilder.buildMobs(level);
@@ -235,7 +225,7 @@ public class Game {
                         mob.getArmor().getClass().getSimpleName() + " and armed with " + mob.getWeapon().getClass().getSimpleName());
                 loading();
                 mob.getInfoMob();
-                fight(mob);         //lauches the fight versus the mob
+                fight(mob);
 
                 if (player.getHp() <= 0) {          //if the player dies the game ends
                     System.out.println("---------------YOU DIED---------------");
