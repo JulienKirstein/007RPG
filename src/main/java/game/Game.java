@@ -65,8 +65,7 @@ public class Game {
         boolean ameliorationIsValid = false;
         while (ameliorationIsValid == false) {
             System.out.println("1 -> +10maxHp, 2 -> +5 attack, , 3 -> +3 bullets");
-            Scanner scanner = new Scanner(System.in);
-            int action = scanner.nextInt();
+            int action = sc.nextInt();
             if (action == 1||action == 2 || action == 3){
                 ameliorationIsValid = true;
                 if (action == 1){
@@ -104,11 +103,11 @@ public class Game {
 
 
     public static int loading(){
-    	wait(150);
+    	wait(300);
         System.out.println("                    .");
-        wait(150);
+        wait(300);
         System.out.println("                    .");
-        wait(150);
+        wait(300);
         System.out.println("                    .");
         return 1;
     }
@@ -129,8 +128,7 @@ public class Game {
             boolean actionIsValid = false;
             while (!actionIsValid) {
                 System.out.println("        1 ATTACK, 2 DEFEND, 3 RELOAD");
-                Scanner scanner = new Scanner(System.in);
-                int action = scanner.nextInt();
+                int action = sc.nextInt();
                 if (action == 1 || action == 2 ||action == 3){
                     loading();
 
@@ -254,8 +252,7 @@ public class Game {
                             System.out.print("New weapon : ");
                             mob.getInfoWeapon();
                             System.out.println("                            y/n");
-                            Scanner scanner = new Scanner(System.in);
-                            String choice = scanner.nextLine();
+                            String choice = sc.nextLine();
 
                             if (choice.equals("y")) {
                                 player.setWeapon(mob.getWeapon());
@@ -271,8 +268,7 @@ public class Game {
                             System.out.print("New weapon : ");
                             mob.getInfoArmor();
                             System.out.println("                            y/n");
-                            Scanner scannerArm = new Scanner(System.in);
-                            String choiceArm = scannerArm.nextLine();
+                            String choiceArm = sc.nextLine();
                             if (choiceArm.equals("y")) {
                                 player.setArmor(mob.getArmor());
                                 System.out.println("you are equipped with : " + player.getArmor().getClass().getSimpleName());
