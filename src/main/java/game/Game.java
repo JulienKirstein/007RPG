@@ -65,7 +65,7 @@ public class Game {
         boolean ameliorationIsValid = false;
         while (ameliorationIsValid == false) {
             System.out.println("1 -> +10maxHp, 2 -> +5 attack, , 3 -> +3 bullets");
-            int action = checkIntInput();
+            int action = checkIntInput(sc);
             if (action == 1||action == 2 || action == 3){
                 ameliorationIsValid = true;
                 if (action == 1){
