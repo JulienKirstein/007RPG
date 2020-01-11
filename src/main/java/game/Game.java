@@ -103,11 +103,11 @@ public class Game {
 
 
     public static int loading(){
-    	wait(300);
+    	wait(150);
         System.out.println("                    .");
-        wait(300);
+        wait(150);
         System.out.println("                    .");
-        wait(300);
+        wait(150);
         System.out.println("                    .");
         return 1;
     }
