@@ -65,7 +65,7 @@ public class Game {
         boolean ameliorationIsValid = false;
         while (ameliorationIsValid == false) {
             System.out.println("1 -> +10maxHp, 2 -> +5 attack, , 3 -> +3 bullets");
-            int action = sc.nextInt();
+            int action = checkIntInput();
             if (action == 1||action == 2 || action == 3){
                 ameliorationIsValid = true;
                 if (action == 1){
@@ -128,7 +128,7 @@ public class Game {
             boolean actionIsValid = false;
             while (!actionIsValid) {
                 System.out.println("        1 ATTACK, 2 DEFEND, 3 RELOAD");
-                int action = sc.nextInt();
+                int action = checkIntInput(sc);
                 if (action == 1 || action == 2 ||action == 3){
                     loading();
 
@@ -182,6 +182,20 @@ public class Game {
             mob.reload();
         }
     }
+	public static int checkIntInput(Scanner sc){
+		int i = 0;
+		boolean validated = false;
+		while(!validated) {
+			try { 
+				i = Integer.parseInt(sc.nextLine());
+				validated = true;
+			}
+			catch(Exception e) {
+				System.out.println("Erreur, veuillez entrez un nombre !");
+			}
+		}
+		return i;
+	}
     void displayRules()
     {
         System.out.println("-----------The Rules-----------");
