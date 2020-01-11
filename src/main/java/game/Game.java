@@ -65,8 +65,7 @@ public class Game {
         boolean ameliorationIsValid = false;
         while (ameliorationIsValid == false) {
             System.out.println("1 -> +10maxHp, 2 -> +5 attack, , 3 -> +3 bullets");
-            Scanner scanner = new Scanner(System.in);
-            int action = scanner.nextInt();
+            int action = checkIntInput(sc);
             if (action == 1||action == 2 || action == 3){
                 ameliorationIsValid = true;
                 if (action == 1){
@@ -104,12 +103,12 @@ public class Game {
 
 
     public static int loading(){
+    	wait(150);
         System.out.println("                    .");
-        wait(300);
+        wait(150);
         System.out.println("                    .");
-        wait(300);
+        wait(150);
         System.out.println("                    .");
-        wait(300);
         return 1;
     }
 
@@ -129,8 +128,7 @@ public class Game {
             boolean actionIsValid = false;
             while (!actionIsValid) {
                 System.out.println("        1 ATTACK, 2 DEFEND, 3 RELOAD");
-                Scanner scanner = new Scanner(System.in);
-                int action = scanner.nextInt();
+                int action = checkIntInput(sc);
                 if (action == 1 || action == 2 ||action == 3){
                     loading();
 
@@ -184,35 +182,56 @@ public class Game {
             mob.reload();
         }
     }
+	public static int checkIntInput(Scanner sc){
+		int i = 0;
+		boolean validated = false;
+		while(!validated) {
+			try { 
+				i = Integer.parseInt(sc.nextLine());
+				validated = true;
+			}
+			catch(Exception e) {
+				System.out.println("Erreur, veuillez entrez un nombre !");
+			}
+		}
+		return i;
+	}
+    void displayRules()
+    {
+        System.out.println("-----------The Rules-----------");
+        System.out.println("the rules are simple, you have 3 stats:");
+        System.out.println("Health points: when it goes to zero you die");
+        System.out.println("Attack: the damage you deal to the enemy when you attack");
+        System.out.println("bullets: the number of attack charges that you got");
+        System.out.println("");
+        System.out.println("each turn you can choose between: ");
+        System.out.println("Attacking that will cost you bullets");
+        System.out.println("Protect, that will block incoming enemy damages");
+        System.out.println("And Reloading that will restore one bullet");
+        System.out.println("");
+        System.out.println("You and the mobs also got an armor and a weapon");
+        System.out.println("The armor allows you to block some damages and regenerates between fights");
+        System.out.println("your current armor is " + player.getArmor().getClass().getSimpleName() + " which is not very usefull" );
+        System.out.println("");
+        System.out.println("The weapon gives you additional damages, self-healing and critical chances which will allow you to hit twice!!");
+
+        System.out.println("Beware : some weapon will cost more bullets per attacks, keep that in mind");
+        System.out.println("You also won't be able to see your bullets in the middle of a fight, so keep track of your bullet count!! ");
+        System.out.println("your current weapon is " + player.getWeapon().getClass().getSimpleName() + " which is pretty bad" );
+        System.out.println("");
+        System.out.println("but don't worry you can drop weapons and armor on mobs!" );
+        loading();
+        System.out.println("Press enter when you are ready" );
+        sc.nextLine(); // REPLACE BY sc , avoid recreation of a scanner
+        System.out.println("----------------------GOOD LUCK----------------------" );
+    }
 
     void loop() {
         while (player.getHp() > 0) {
-            System.out.println("-----------The Rules-----------");
-            System.out.println("the rules are simple, you have 3 stats:");
-            System.out.println("Health points: when it goes to zero you die");
-            System.out.println("Attack: the damage you deal to the enemy when you attack");
-            System.out.println("bullets: the number of attack charges that you got");
-            System.out.println("");
-            System.out.println("each turn you can choose between: ");
-            System.out.println("Attacking that will cost you bullets");
-            System.out.println("Protect, that will block incoming enemy damages");
-            System.out.println("And Reloading that will restore one bullet");
-            System.out.println("");
-            System.out.println("You and the mobs also got an armor and a weapon");
-            System.out.println("The armor allows you to block some damages and regenerates between fights");
-            System.out.println("your current armor is " + player.getArmor().getClass().getSimpleName() + " which is not very usefull" );
-            System.out.println("");
-            System.out.println("The weapon gives you additional damages, self-healing and critical chances which will allow you to hit twice!!");
-
-            System.out.println("Beware : some weapon will cost more bullets per attacks, keep that in mind");
-            System.out.println("You also won't be able to see your bullets in the middle of a fight, so keep track of your bullet count!! ");
-            System.out.println("your current weapon is " + player.getWeapon().getClass().getSimpleName() + " which is pretty bad" );
-            System.out.println("");
-            System.out.println("but don't worry you can drop weapons and armor on mobs!" );
-            loading();
-            System.out.println("Press enter when you are ready" );
-            sc.nextLine(); // REPLACE BY sc , avoid recreation of a scanner
-            System.out.println("----------------------GOOD LUCK----------------------" );
+        	if(level==0)
+        	{
+        		displayRules();
+        	}
             MobsBuilder mobsBuilder = new MobsBuilder();
             MobsBoard mobs = mobsBuilder.buildMobs(level);
             player.getInfoPlayer();
@@ -247,8 +266,7 @@ public class Game {
                             System.out.print("New weapon : ");
                             mob.getInfoWeapon();
                             System.out.println("                            y/n");
-                            Scanner scanner = new Scanner(System.in);
-                            String choice = scanner.nextLine();
+                            String choice = sc.nextLine();
 
                             if (choice.equals("y")) {
                                 player.setWeapon(mob.getWeapon());
@@ -264,8 +282,7 @@ public class Game {
                             System.out.print("New weapon : ");
                             mob.getInfoArmor();
                             System.out.println("                            y/n");
-                            Scanner scannerArm = new Scanner(System.in);
-                            String choiceArm = scannerArm.nextLine();
+                            String choiceArm = sc.nextLine();
                             if (choiceArm.equals("y")) {
                                 player.setArmor(mob.getArmor());
                                 System.out.println("you are equipped with : " + player.getArmor().getClass().getSimpleName());
