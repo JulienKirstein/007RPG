@@ -55,16 +55,14 @@ public class MobsBoard {
     * */
     void addMob(Mob mob) {
 
-        int MAX_WEAPON = 1;
-        int MIN_WEAPON = 0;
-        int MAX_ARMOR = 1;
-        int MIN_ARMOR = 0;
-        int MAX_QUALITY = 4;
-        int MIN_QUALITY = 0;
+        int level =mob.getLevel();
+        int MAX_WEAPON = MobsBoard.weaponBoard[level].length - 1;
+        int MAX_ARMOR = MobsBoard.armorBoard[level].length - 1;
+        int MAX_QUALITY=MobsBoard.qualityBoard[level].length - 1;
 
-        mob.setWeapon(MobsBoard.weaponBoard[mob.getLevel()][MIN_WEAPON + (int)(Math.random() * ((MAX_WEAPON - MIN_WEAPON)+1))]);
-        mob.setArmor(MobsBoard.armorBoard[mob.getLevel()][MIN_ARMOR + (int)(Math.random() * ((MAX_ARMOR - MIN_ARMOR)+1))]);
-        mob.setQuality(MobsBoard.qualityBoard[mob.getLevel()][MIN_QUALITY + (int)(Math.random() * ((MAX_QUALITY - MIN_QUALITY)+1))]);
+        mob.setWeapon(MobsBoard.weaponBoard[level][(int)(Math.random() * (MAX_WEAPON +1))]);
+        mob.setArmor(MobsBoard.armorBoard[level][(int)(Math.random() * (MAX_ARMOR +1))]);
+        mob.setQuality(MobsBoard.qualityBoard[level][(int)(Math.random() * (MAX_QUALITY +1))]);
         mob.setName(mob.getClass().getSimpleName());
         mobs.add(mob);
     }
