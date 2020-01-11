@@ -104,12 +104,12 @@ public class Game {
 
 
     public static int loading(){
+    	wait(150);
         System.out.println("                    .");
-        wait(300);
+        wait(150);
         System.out.println("                    .");
-        wait(300);
+        wait(150);
         System.out.println("                    .");
-        wait(300);
         return 1;
     }
 
@@ -184,35 +184,42 @@ public class Game {
             mob.reload();
         }
     }
+    void displayRules()
+    {
+        System.out.println("-----------The Rules-----------");
+        System.out.println("the rules are simple, you have 3 stats:");
+        System.out.println("Health points: when it goes to zero you die");
+        System.out.println("Attack: the damage you deal to the enemy when you attack");
+        System.out.println("bullets: the number of attack charges that you got");
+        System.out.println("");
+        System.out.println("each turn you can choose between: ");
+        System.out.println("Attacking that will cost you bullets");
+        System.out.println("Protect, that will block incoming enemy damages");
+        System.out.println("And Reloading that will restore one bullet");
+        System.out.println("");
+        System.out.println("You and the mobs also got an armor and a weapon");
+        System.out.println("The armor allows you to block some damages and regenerates between fights");
+        System.out.println("your current armor is " + player.getArmor().getClass().getSimpleName() + " which is not very usefull" );
+        System.out.println("");
+        System.out.println("The weapon gives you additional damages, self-healing and critical chances which will allow you to hit twice!!");
+
+        System.out.println("Beware : some weapon will cost more bullets per attacks, keep that in mind");
+        System.out.println("You also won't be able to see your bullets in the middle of a fight, so keep track of your bullet count!! ");
+        System.out.println("your current weapon is " + player.getWeapon().getClass().getSimpleName() + " which is pretty bad" );
+        System.out.println("");
+        System.out.println("but don't worry you can drop weapons and armor on mobs!" );
+        loading();
+        System.out.println("Press enter when you are ready" );
+        sc.nextLine(); // REPLACE BY sc , avoid recreation of a scanner
+        System.out.println("----------------------GOOD LUCK----------------------" );
+    }
 
     void loop() {
         while (player.getHp() > 0) {
-            System.out.println("-----------The Rules-----------");
-            System.out.println("the rules are simple, you have 3 stats:");
-            System.out.println("Health points: when it goes to zero you die");
-            System.out.println("Attack: the damage you deal to the enemy when you attack");
-            System.out.println("bullets: the number of attack charges that you got");
-            System.out.println("");
-            System.out.println("each turn you can choose between: ");
-            System.out.println("Attacking that will cost you bullets");
-            System.out.println("Protect, that will block incoming enemy damages");
-            System.out.println("And Reloading that will restore one bullet");
-            System.out.println("");
-            System.out.println("You and the mobs also got an armor and a weapon");
-            System.out.println("The armor allows you to block some damages and regenerates between fights");
-            System.out.println("your current armor is " + player.getArmor().getClass().getSimpleName() + " which is not very usefull" );
-            System.out.println("");
-            System.out.println("The weapon gives you additional damages, self-healing and critical chances which will allow you to hit twice!!");
-
-            System.out.println("Beware : some weapon will cost more bullets per attacks, keep that in mind");
-            System.out.println("You also won't be able to see your bullets in the middle of a fight, so keep track of your bullet count!! ");
-            System.out.println("your current weapon is " + player.getWeapon().getClass().getSimpleName() + " which is pretty bad" );
-            System.out.println("");
-            System.out.println("but don't worry you can drop weapons and armor on mobs!" );
-            loading();
-            System.out.println("Press enter when you are ready" );
-            sc.nextLine(); // REPLACE BY sc , avoid recreation of a scanner
-            System.out.println("----------------------GOOD LUCK----------------------" );
+        	if(level==0)
+        	{
+        		displayRules();
+        	}
             MobsBuilder mobsBuilder = new MobsBuilder();
             MobsBoard mobs = mobsBuilder.buildMobs(level);
             player.getInfoPlayer();
