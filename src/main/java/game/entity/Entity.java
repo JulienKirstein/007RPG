@@ -89,7 +89,7 @@ public abstract class Entity {
                 setHp(getMaxHp());
             }
 
-            System.out.println("You heal yourself" + (getHp()- initHp)+ " Hp");
+            System.out.println("You heal yourself " + (getHp()- initHp)+ " Hp");
         }
     }
 
@@ -146,7 +146,7 @@ public abstract class Entity {
     public void getInfoArmor(){
 
         System.out.println(getArmor().getClass().getSimpleName() + "---> Damage raduction :" + getArmor().damageReduced() +
-                " added maxHP :" + getArmor().pdV() + " regeneration :" + getArmor().regen());
+                "| added maxHP :" + getArmor().pdV() + "| regeneration :" + getArmor().regen());
     }
 
     /*

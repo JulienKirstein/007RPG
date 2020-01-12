@@ -246,7 +246,7 @@ public class Game {
                 mob.getInfoMob();
                 fight(mob);
 
-                if (player.getHp() <= 0) {          //if the player dies the game ends
+                if (player.getHp() <= 0) {
                     System.out.println("---------------YOU DIED---------------");
                     System.out.println(score);
                     return 0;
@@ -279,12 +279,14 @@ public class Game {
                             System.out.println("???Do you want " + mob.getArmor().getClass().getSimpleName() + "???");
                             System.out.print("Actual armor : ");
                             player.getInfoArmor();
-                            System.out.print("New weapon : ");
+                            System.out.print("New armor : ");
                             mob.getInfoArmor();
                             System.out.println("                            y/n");
                             String choiceArm = sc.nextLine();
                             if (choiceArm.equals("y")) {
                                 player.setArmor(mob.getArmor());
+                                int addPv = mob.getArmor().pdV();
+                                player.setMaxHp(player.getMaxHp()+addPv);
                                 System.out.println("you are equipped with : " + player.getArmor().getClass().getSimpleName());
                                 loading();
                             }
