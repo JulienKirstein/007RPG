@@ -138,7 +138,7 @@ public abstract class Entity {
     public void getInfoWeapon(){
 
         System.out.println(getWeapon().getClass().getSimpleName() + "---> Additionnal damages :" + getWeapon().damage() +
-                " Bullet cost :" + getWeapon().bps() + " LifeSteal :" + getWeapon().lifeSelfImpact());
+                "| Bullet cost :" + getWeapon().bps() + "| LifeSteal :" + getWeapon().lifeSelfImpact());
     }
 
     /* getInfoArmor: displays the stats of the armor
