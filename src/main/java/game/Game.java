@@ -226,7 +226,7 @@ public class Game {
         System.out.println("----------------------GOOD LUCK----------------------" );
     }
 
-    void loop() {
+    public int loop() {
         while (player.getHp() > 0) {
         	if(level==0)
         	{
@@ -249,7 +249,7 @@ public class Game {
                 if (player.getHp() <= 0) {          //if the player dies the game ends
                     System.out.println("---------------YOU DIED---------------");
                     System.out.println(score);
-
+                    return 0;
                 }
                 if (mob.getHp() <= 0) {       //if the mob dies
 
@@ -309,5 +309,6 @@ public class Game {
             upgrade();      //the player can upgrade himself
         }
         System.out.println("WELL PLAYED YOU WON");
+        return 0;
     }
 }
